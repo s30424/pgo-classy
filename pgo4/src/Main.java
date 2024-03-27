@@ -1,17 +1,22 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        Student student1 = new Student("abc", "def", "s234234", "s234234@pjwstk.edu.pl",
+                ".pjwstk.edu.pl", new double[]{5.0, 5.5, 4.0, 3.5});
+        Student student2 = new Student("def", "ghi", "s234234", "s234234@pjwstk.edu.pl",
+                ".pjwstk.edu.pl", new double[]{5.0, 5.5, 4.0, 3.5});
+        Student student3 = new Student("ghi", "jkl", "s234234", "s234234@pjwstk.edu.pl",
+                ".pjwstk.edu.pl", new double[]{5.0, 5.5, 4.0, 3.5});
+        Student student4 = new Student("jkl", "mno", "s234234", "s234234@pjwstk.edu.pl",
+                ".pjwstk.edu.pl", new double[]{5.0, 5.5, 4.0, 3.5});
+        Student student5 = new Student("mno", "pqr", "s234234", "s234234@pjwstk.edu.pl",
+                ".pjwstk.edu.pl", new double[]{5.0, 5.5, 4.0, 3.5});
+        StudentGroup studentGroup = new StudentGroup("group1", new Student[]{student1, student2, student3,
+                student4});
+        System.out.println(student1.countAGP());
+        studentGroup.addStudent(student5);
+        System.out.println(studentGroup.students.length);
+        for(int i = 0; i < studentGroup.students.length; i++) {
+            System.out.println(studentGroup.students[i]);
         }
     }
 }
