@@ -1,37 +1,57 @@
 public class Student {
-    public String fName;
-    public String lName;
-    public String indexNumber;
+    public String fname;
+    public String lname;
     public String email;
-    public String address;
-    public double[] grades;
+    public String adress;
+    public String indexNnumber;
+    public double[] ocena;
 
-    public Student(String fName, String lName, String indexNumber, String email, String address, double[] grades) {
-        this.fName = fName;
-        this.lName = lName;
-        this.indexNumber = indexNumber;
+    public Student(String fname, String lname, String email, String adress, String indexNnumber, double[] ocena) {
+        this.fname = fname;
+        this.lname = lname;
         this.email = email;
-        this.address = address;
-        this.grades = grades;
+        this.adress = adress;
+        this.indexNnumber = indexNnumber;
+        this.ocena = ocena;
     }
-
-    public double countAGP() {
-        double sum = 0.0;
-        try {
-            for (double i : grades) {
-                sum += i;
+    public double obliczsrednia (double[] doubles) {
+        this.ocena = ocena;
+        double sumaocen = 0;
+            if (ocena.length < 20) {
+                for (int i = 0; i < ocena.length; i++) {
+                sumaocen = sumaocen + ocena[i];
             }
-            sum /= grades.length;
-        } catch (IllegalArgumentException e) {
-            System.out.println("No marks found. Invalid student");
-            e.printStackTrace();
-        }
-        if(Math.round(sum*100)/100.0 - Math.round(sum) < 0.75 && Math.round(sum*100)/100.0 - Math.round(sum) > 0.5) {
-            return Math.round(sum) - 1;
-        } else if(Math.round(sum*100)/100.0 - Math.round(sum) > 0.75 && Math.round(sum*100)/100.0 - Math.round(sum)
-                < 0.5) {
-            return Math.round(sum) + 1;
-        }
-        return Math.round(sum);
+                double srednia = sumaocen / ocena.length;
+                double ocenakoncowa = 0;
+                if (srednia <= 2.4) {
+                    ocenakoncowa =2;
+                }
+                if (srednia > 2.4 && srednia <= 2.5) {
+                    ocenakoncowa =2.5;
+                }
+                if (srednia > 2.5 && srednia <= 3.4) {
+                    ocenakoncowa =3;
+                }
+                if (srednia > 3.4 && srednia <= 3.5) {
+                    ocenakoncowa =3.5;
+                }
+                if (srednia > 3.5 && srednia <= 4.4) {
+                    ocenakoncowa =4;
+                }
+                if (srednia > 4.4 && srednia <= 4.5) {
+                    ocenakoncowa =4.5;
+                }
+                if (srednia > 4.5 && srednia <= 5.0) {
+                    ocenakoncowa =5;
+                }
+                if (srednia >5 || srednia ==0 ){
+                    throw new IllegalArgumentException("podana ocena jest za wysoka");
+                }
+                return ocenakoncowa;
+            }
+            else {
+                throw new IllegalArgumentException("za duza liczba ocen");
+            }
     }
 }
+
